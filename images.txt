@@ -1,6 +1,2 @@
-nginx
-#支持私库
-k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.0.0
-xhofe/alist:latest
-#支持指定架构
---platform=linux/arm64 xiaoyaliu/alist
+# 转存详情镜像到阿里云 ACR
+ghcr.io/wx85745997/content-flow-detail:0e9d07ba4c442714166c778afbaad9d568545fd3
