@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches: [ main ]
+  schedule:
+    # GitHub Actions 的最短常规周期为 5 分钟；使用 UTC 时间。
+    - cron: "*/5 * * * *"
 
 
 env:
