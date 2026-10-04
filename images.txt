@@ -1,2 +1,2 @@
 # 转存详情镜像到阿里云 ACR
-ghcr.io/wx85745997/content-flow-detail:0e9d07ba4c442714166c778afbaad9d568545fd3
+ghcr.io/wx85745997/content-flow-detail:74ad5c0b0a723283504397f6c5deefa7715cf82b
