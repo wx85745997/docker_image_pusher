@@ -60,6 +60,21 @@ jobs:
     - name: Docker Setup Buildx
       uses: docker/setup-buildx-action@v3
 
+    - name: 同步 content-flow 最新详情镜像标签
+      env:
+        GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+      run: |
+        set -euo pipefail
+        latest_sha=$(curl -fsSL \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${GHCR_TOKEN}" \
+          "https://api.github.com/repos/wx85745997/content-flow/commits/main" \
+          | jq -r '.sha')
+        test -n "${latest_sha}" && test "${latest_sha}" != "null"
+        latest_image="ghcr.io/wx85745997/content-flow-detail:${latest_sha}"
+        sed -i -E "s#^ghcr\.io/wx85745997/content-flow-detail:[^[:space:]]+#${latest_image}#" images.txt
+        echo "将同步 content-flow 最新详情镜像: ${latest_image}"
+
     - name: Build and push image Aliyun
       run: |
         docker login -u $ALIYUN_REGISTRY_USER -p $ALIYUN_REGISTRY_PASSWORD $ALIYUN_REGISTRY

@@ -78,3 +78,8 @@ xiaoyaliu/alist
 修改/.github/workflows/docker.yaml文件
 添加 schedule即可定时执行(此处cron使用UTC时区)
 ![](doc/定时执行.png)
+
+本项目已对 `content-flow-detail` 做自动同步：定时任务会读取
+`wx85745997/content-flow` 的 `main` 最新提交，并自动生成对应的 GHCR
+镜像标签后推送到阿里云，不需要手动修改 `images.txt`。其他镜像仍按
+`images.txt` 中的固定标签同步。
